@@ -1,0 +1,29 @@
+// Leetcode 1838
+
+class Solution {
+public:
+    int maxFrequency(vector<int>& nums, int k) {
+        int l=0;
+        long currsum=0;
+        int result=0;
+
+        sort(nums.begin(),nums.end());
+    
+        for(int r=0;r<nums.size();r++){
+            int target=nums[r];
+            currsum+=nums[r];
+            long windowsum= (long)(r-l+1)*target;
+            long op=windowsum-currsum;
+            if(op>k){
+                currsum=currsum-nums[l];
+                l++;
+                op=(long)(r-l+1)*target-currsum;
+            }
+            result=max(result,(r-l+1));
+        }
+        return result;
+    }
+};
+
+// TC : O(nlogn)
+// SC : O(1)
