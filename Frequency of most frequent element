@@ -3,7 +3,7 @@
 class Solution {
 public:
     int maxFrequency(vector<int>& nums, int k) {
-        int l=0;
+        int l=0; 
         long currsum=0;
         int result=0;
 
