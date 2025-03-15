@@ -1,0 +1,19 @@
+// Leetcode 121
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n=prices.size();
+        int maxprofit=0,curprofit=0;
+        int mincp=prices[0];
+        for(int i=0;i<n;i++){
+            curprofit=prices[i]-mincp;
+            maxprofit=max(curprofit,maxprofit);
+            mincp=min(prices[i],mincp);
+        }
+        return maxprofit;
+    }
+};
+
+// TC: O(n)
+// SC: O(1)
